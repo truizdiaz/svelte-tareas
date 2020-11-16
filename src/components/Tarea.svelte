@@ -4,7 +4,12 @@
 
     function agregarTarea(event){
         if(event.key === 'Enter'){
-            tareas.push(nombreTarea);
+
+            const tarea = {
+                nombre: nombreTarea,
+                estado: false
+            }
+            tareas.push(tarea);
             console.log(tareas);
             tareas = tareas;
             nombreTarea = '';
@@ -14,6 +19,10 @@
     function deleteTarea(i){
         tareas.splice(i, 1);
         tareas = tareas;
+    }
+
+    function actualizarTarea(tarea, i){
+        tareas[i].estado = !tarea.estado
     }
 </script>
 
@@ -38,10 +47,10 @@
                <ul class="list-group">
                 {#each tareas as tarea, i}
                    <li class="list-group-item d-flex justify-content-between">
-                       <span class="cursor">
-                            <i class="far fa-circle"></i>
+                       <span class={tarea.estado === true ? 'text-success cursor' : 'cursor'} on:click={() => actualizarTarea(tarea, i)}>
+                           <i class={tarea.estado === true ? 'fas fa-check-circle' : 'far fa-circle'} ></i>
                        </span>
-                        <h5>{ tarea }</h5>
+                        <h5>{ tarea.nombre }</h5>
                         <span class="cursor text-danger" on:click={() => deleteTarea(i)}>
                             <i class="fas fa-trash-alt"></i>
                         </span>
