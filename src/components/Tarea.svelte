@@ -10,6 +10,11 @@
             nombreTarea = '';
         }
     }
+
+    function deleteTarea(i){
+        tareas.splice(i, 1);
+        tareas = tareas;
+    }
 </script>
 
 <div>
@@ -31,13 +36,13 @@
                {/if}
 
                <ul class="list-group">
-                {#each tareas as tarea}
+                {#each tareas as tarea, i}
                    <li class="list-group-item d-flex justify-content-between">
                        <span class="cursor">
                             <i class="far fa-circle"></i>
                        </span>
                         <h5>{ tarea }</h5>
-                        <span class="cursor text-danger">
+                        <span class="cursor text-danger" on:click={() => deleteTarea(i)}>
                             <i class="fas fa-trash-alt"></i>
                         </span>
                    </li>
