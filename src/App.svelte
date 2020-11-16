@@ -3,11 +3,16 @@
 	import Tarea from './components/Tarea.svelte';
 </script>
 
-<main>
+<main class="fondo">
 	<Navbar />
 	<Tarea />
 </main>
 
 <style>
-
+	.fondo {
+		background-image: url(../assets/img/fondoApp.jpg);
+		height: 100vh;
+		background-position: center;
+		background-size: cover;
+	}
 </style>
