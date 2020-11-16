@@ -32,8 +32,14 @@
 
                <ul class="list-group">
                 {#each tareas as tarea}
-                   <li class="list-group-item">
+                   <li class="list-group-item d-flex justify-content-between">
+                       <span class="cursor">
+                            <i class="far fa-circle"></i>
+                       </span>
                         <h5>{ tarea }</h5>
+                        <span class="cursor text-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
                    </li>
                    {/each}
                </ul>
@@ -48,5 +54,9 @@
     }
     input {
         text-align: center;
+    }
+
+    .cursor {
+        cursor: pointer;
     }
 </style>
